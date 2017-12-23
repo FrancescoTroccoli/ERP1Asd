@@ -97,10 +97,12 @@ function Calendar(objName){
 	{
 	var str = '<table Author="alin" cellSpacing="0" class="cdrMenu" cellPadding="0">\n';
 	var i = 0;	
+	var _date;
+	var _year;
 	for(i = 0; i < 10; i++)
 	{	  
-	var _year = year + i;
-	var _date = new Date(_year,this.date.getMonth(),this.date.getDate());
+	_year = year + i;
+	_date = new Date(_year,this.date.getMonth(),this.date.getDate());
 	str += '<tr Author="alin" align="center"><td Author="alin" width="13%" height="16" ';
 	if(this.date.getFullYear() != _year)
 	{
@@ -125,9 +127,10 @@ function Calendar(objName){
 	{
 	var str = '<table Author="alin" cellSpacing="0" class="cdrMenu" cellPadding="0">\n';
 	var i = 1;	
+	var _date;
 	for(i = 1; i <= 12; i++)
 	{   
-	var _date = new Date(this.date.getFullYear(),i-1,this.date.getDate());		
+	_date = new Date(this.date.getFullYear(),i-1,this.date.getDate());		
 	str += '</tr><tr Author="alin" align="center"><td Author="alin" height="16" ';
 	if(this.date.getMonth() + 1 != i)
 	{
@@ -244,6 +247,10 @@ function Calendar(objName){
 		_monthDays[1]=28;
 	}
 	var i = 0;
+	var _previDate;
+	var _nextDate;
+	var _curDate;
+	var _day;
 	for(i = 0; i < 40; i++)
 	{	
 	var _dayElement = getObjById("cdrDay" + i);
@@ -257,7 +264,7 @@ function Calendar(objName){
 	//获取上一个月的日期
 	if(this.showMoreDay)
 	{
-	var _previDate = new Date(_year,_month - 1,_previDay);
+	_previDate = new Date(_year,_month - 1,_previDay);
 	_dayElement.innerHTML = _previDay;
 	_dayElement.title = _previDate.toFormatString("yyyy年mm月dd日");
 	_dayElement.value = _previDate.toFormatString("-");	
@@ -274,7 +281,7 @@ function Calendar(objName){
 	//获取下个月的日期
 	if(this.showMoreDay)
 	{
-	var _nextDate = new Date(_year,_month + 1,_nextDay);
+	_nextDate = new Date(_year,_month + 1,_nextDay);
 	_dayElement.innerHTML = _nextDay;
 	_dayElement.title = _nextDate.toFormatString("yyyy年mm月dd日");
 	_dayElement.value = _nextDate.toFormatString("-");
@@ -300,7 +307,7 @@ function Calendar(objName){
 	{
 	_dayElement.style.color = this.style.bodyHolidayFontColor;			  
 	}
-	var _curDate = new Date(_year, _month, _day);
+	_curDate = new Date(_year, _month, _day);
 	_dayElement.title =  _curDate.toFormatString("yyyy年mm月dd日");
 	_dayElement.value = _curDate.toFormatString("-");
 	_day++;
