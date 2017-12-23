@@ -200,9 +200,7 @@ function Calendar(objName){
 	if(isNaN(_date)) _date = new Date();	
 	this.date = _date;
 	this.bindHeader();	
-	var _year = _date.getFullYear();
-	var _month = _date.getMonth();
-	var _day = 1;	
+	var _year = _date.getFullYear(); var _month = _date.getMonth(); var _day = 1;	
 	var _startDay = new Date(_year,_month,1).getDay();
 	
 	var _previYear;
@@ -221,7 +219,6 @@ function Calendar(objName){
 			_previMonth=_month-1;
 		}
 	
-	
 	var _previDay = _monthDays[_previMonth];
 	
 	//if (_previMonth == 1)_previDay =((_previYear%4==0)&&(_previYear%100!=0)||(_previYear%400==0))?29:28;	
@@ -236,21 +233,14 @@ function Calendar(objName){
 	}
 	_previDay -= _startDay - 1;
 	
-	
 	var _nextDay = 1;
-	
-	//_monthDays[1] = ((_year%4==0)&&(_year%100!=0)||(_year%400==0))?29:28;
 	
 	if((_year%4==0)&&(_year%100!=0)||(_year%400==0)){
 		_monthDays[1]=29;
 	}else{
 		_monthDays[1]=28;
 	}
-	var i = 0;
-	var _previDate;
-	var _nextDate;
-	var _curDate;
-	var _day;
+	var _previDate, _nextDate, _curDate, _day, i=0, temp=new Date(_year,_month,1).getDay() && _day <= _monthDays[_month];
 	for(i = 0; i < 40; i++)
 	{	
 	var _dayElement = getObjById("cdrDay" + i);
@@ -293,7 +283,7 @@ function Calendar(objName){
 	_dayElement.title = "";
 	}
 	}
-	else if(i >= new Date(_year,_month,1).getDay() && _day <= _monthDays[_month])
+	else if(i >= temp)
 	{
 	//获取本月日期
 	_dayElement.innerHTML = _day;
