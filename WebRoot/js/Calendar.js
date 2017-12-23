@@ -67,7 +67,8 @@ for(i = 0; i < 6; i++)
 str += '<tr Author="alin" align="center">';
 for(j = 0; j < 7; j++)
 {
-str = str + '<td Author="alin" class="dayOut" id="cdrDay'+(n++)+'" width="13%"></td>\n';
+str = str + '<td Author="alin" class="dayOut" id="cdrDay'+(n)+'" width="13%"></td>\n';
+n=n+1;
 }
 str = str + '</tr>';
 }
