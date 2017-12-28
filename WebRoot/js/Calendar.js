@@ -421,7 +421,7 @@ function Calendar(objName){
 	var _obj = getObjById("cdrMenu");
 	this.timer = window.setTimeout(function(){_obj.style.display='none';},500);	
 	}
-	Number.prototype.NaN0 = function()
+	Nan0Mod = function()
 	{
 	
 	//	return isNaN(this) ? 0 : this;
@@ -432,7 +432,7 @@ function Calendar(objName){
 		}
 	
 	}
-	Date.prototype.toFormatString = function(fs)
+	ToFormatStringMod = function(fs)
 	{
 	if(fs.length == 1)
 	{ 
